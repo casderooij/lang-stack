@@ -1,4 +1,7 @@
 [
-  { "id": "1", "name": "Basic Greetings" },
-  { "id": "2", "name": "Food & Drink" }
+  {
+    "id": "1",
+    "name": "Basic Greetings",
+    "translation": { "from": "en", "to": "de" }
+  }
 ]

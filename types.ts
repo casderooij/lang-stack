@@ -1,6 +1,10 @@
 export interface Stack {
   id: string
   name: string
+  translation: {
+    from: string
+    to: string
+  }
 }
 
 export interface Card {
