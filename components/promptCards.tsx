@@ -24,6 +24,7 @@ export function PromptCards({ cards }: PromptCardsProps) {
           index={index}
           prompt={card.prompt}
           isTopCard={topCardId === card.id}
+          onClick={() => setTopCardId(card.id)}
         />
       ))}
     </motion.div>

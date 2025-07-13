@@ -5,9 +5,15 @@ interface PromptCardProps {
   index: number
   prompt: string
   isTopCard: boolean
+  onClick: () => void
 }
 
-export function PromptCard({ index, prompt, isTopCard }: PromptCardProps) {
+export function PromptCard({
+  index,
+  prompt,
+  isTopCard,
+  onClick,
+}: PromptCardProps) {
   const [angle] = useState(
     (index + 1) *
       Math.PI *
@@ -15,17 +21,20 @@ export function PromptCard({ index, prompt, isTopCard }: PromptCardProps) {
       Math.abs(Math.sin(1.0 / (0.05 * Math.cos(index)))),
   )
   const [radius] = useState(() => (isTopCard ? 0 : 100 + 2 * index))
+  const [rotation] = useState(Math.sin((index + 1) * 4) * (angle * 0.1))
 
   const variants: Variants = {
     initial: {
       x: 0,
       y: 0,
       opacity: 0,
+      rotate: rotation,
     },
     reveal: {
       x: Math.cos(angle) * radius,
       y: Math.sin(angle) * radius,
       opacity: 1,
+      rotate: isTopCard ? 0 : rotation,
       transition: {
         duration: 0.6,
         ease: 'easeInOut',
@@ -39,6 +48,7 @@ export function PromptCard({ index, prompt, isTopCard }: PromptCardProps) {
       initial="initial"
       animate="reveal"
       variants={variants}
+      onClick={onClick}
     >
       <p className="font-mono text-2xl">{prompt}</p>
     </motion.div>
