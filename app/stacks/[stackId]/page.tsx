@@ -18,5 +18,15 @@ export default async function Page({
   const { stackId } = await params
   const cards = getCardsInStack(stackId)
 
-  return <PromptCards cards={cards} />
+  if (cards.length === 0) {
+    return (
+      <div className="relative top-0 left-0 h-screen w-screen overflow-hidden"></div>
+    )
+  }
+
+  return (
+    <div className="relative top-0 left-0 h-screen w-screen overflow-hidden">
+      <PromptCards cards={cards} />
+    </div>
+  )
 }

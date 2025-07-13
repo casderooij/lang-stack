@@ -13,8 +13,14 @@
   },
   {
     "id": "c3",
-    "stackId": "2",
+    "stackId": "1",
     "prompt": "Water",
     "answer": "Wasser"
+  },
+  {
+    "id": "c4",
+    "stackId": "1",
+    "prompt": "Downwards",
+    "answer": "nach unten"
   }
 ]
