@@ -31,7 +31,7 @@ export function PromptCard({
       x: 0,
       y: 0,
       opacity: 0,
-      rotate: rotation,
+      rotate: isTopCard ? 0 : rotation,
     },
     reveal: {
       x: isTopCard ? 0 : Math.cos(angle) * radius,
@@ -39,6 +39,7 @@ export function PromptCard({
       opacity: 1,
       rotate: isTopCard ? 0 : rotation,
       transition: {
+        delay: index * 0.2,
         duration: 0.6,
         ease: 'easeInOut',
       },
@@ -68,6 +69,7 @@ export function PromptCard({
       className="absolute top-1/2 left-1/2 h-96 w-72 -translate-1/2 rounded-lg bg-stone-50 p-4 text-red-400 drop-shadow-2xl"
       initial="initial"
       animate="reveal"
+      exit="initial"
       variants={variants}
     >
       <p className="font-mono text-2xl">{prompt}</p>
