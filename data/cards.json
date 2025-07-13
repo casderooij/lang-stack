@@ -2,19 +2,19 @@
   {
     "id": "c1",
     "stackId": "1",
-    "question": "Hello",
+    "prompt": "Hello",
     "answer": "Hallo"
   },
   {
     "id": "c2",
     "stackId": "1",
-    "question": "Good morning",
+    "prompt": "Good morning",
     "answer": "Guten Morgen"
   },
   {
     "id": "c3",
     "stackId": "2",
-    "question": "Water",
+    "prompt": "Water",
     "answer": "Wasser"
   }
 ]

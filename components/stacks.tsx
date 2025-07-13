@@ -1,5 +1,6 @@
 import { Stack } from '@/types'
 import { readFileSync } from 'fs'
+import Link from 'next/link'
 import { join } from 'path'
 
 function getStacks() {
@@ -20,7 +21,9 @@ export function Stacks() {
       <h2>Stacks</h2>
       <ul>
         {stacks.map((stack) => (
-          <li key={stack.id}>{stack.name}</li>
+          <li key={stack.id}>
+            <Link href={`/stacks/${stack.id}`}>{stack.name}</Link>
+          </li>
         ))}
       </ul>
     </div>
