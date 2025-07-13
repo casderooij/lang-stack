@@ -1,6 +1,6 @@
 import { motion, Variants } from 'motion/react'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { EyeClosedIcon, EyeOpenIcon } from '@radix-ui/react-icons'
+import { PromptCardReveal } from './promptCardReveal'
 
 interface PromptCardProps {
   index: number
@@ -26,7 +26,6 @@ export function PromptCard({
   const [radius] = useState(() => (isTopCard ? 0 : 100 + 2 * index))
   const [rotation] = useState(Math.sin((index + 1) * 4) * (angle * 0.1))
   const [input, setInput] = useState('')
-  const [reveal, setReveal] = useState(false)
 
   const variants: Variants = {
     initial: {
@@ -91,24 +90,7 @@ export function PromptCard({
         )}
       </div>
 
-      <div className="grid place-content-center">
-        <motion.button
-          type="button"
-          className="flex justify-center rounded p-2 text-stone-600 outline-red-400 focus-visible:outline-2"
-          onClick={() => setReveal(!reveal)}
-          animate={{ opacity: isTopCard ? 1 : 0 }}
-        >
-          {reveal ? (
-            <EyeOpenIcon width={30} height={30} />
-          ) : (
-            <EyeClosedIcon width={30} height={30} />
-          )}
-        </motion.button>
-
-        <motion.div className="font-mono" animate={{ opacity: reveal ? 1 : 0 }}>
-          {answer}
-        </motion.div>
-      </div>
+      {isTopCard && <PromptCardReveal answer={answer} />}
     </motion.div>
   )
 }
