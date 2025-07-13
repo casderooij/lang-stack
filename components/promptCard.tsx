@@ -69,7 +69,6 @@ export function PromptCard({
       initial="initial"
       animate="reveal"
       variants={variants}
-      tabIndex={isTopCard ? 1 : 0}
     >
       <p className="font-mono text-2xl">{prompt}</p>
 

@@ -21,7 +21,7 @@ export function PromptCards({ cards }: PromptCardsProps) {
     <motion.div
       animate="reveal"
       transition={{ delayChildren: stagger(0.2) }}
-      className="absolute inset-0 top-1/2 left-1/2 -translate-1/2 border border-red-300"
+      className="absolute inset-0 top-1/2 left-1/2 -translate-1/2"
     >
       {cardStack.map((card, index) => (
         <PromptCard
