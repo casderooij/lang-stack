@@ -1,4 +1,4 @@
-import { CardList } from '@/components/cardList'
+import { PromptCards } from '@/components/promptCards'
 import { Card } from '@/types'
 import { readFileSync } from 'fs'
 import { join } from 'path'
@@ -16,8 +16,7 @@ export default async function Page({
   params: Promise<{ stackId: string }>
 }) {
   const { stackId } = await params
-
   const cards = getCardsInStack(stackId)
 
-  return <CardList cards={cards} />
+  return <PromptCards cards={cards} />
 }

@@ -4,11 +4,11 @@ import type { Card } from '@/types'
 import { motion, stagger } from 'motion/react'
 import { PromptCard } from './promptCard'
 
-interface CardListProps {
+interface PromptCardsProps {
   cards: Card[]
 }
 
-export function CardList({ cards }: CardListProps) {
+export function PromptCards({ cards }: PromptCardsProps) {
   return (
     <motion.div
       animate="reveal"
