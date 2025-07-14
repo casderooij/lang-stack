@@ -1,3 +1,4 @@
+import { validateAnswer } from '@/utils'
 import { motion, Variants } from 'motion/react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { PromptCardReveal } from './promptCardReveal'
@@ -40,7 +41,6 @@ export function PromptCard({
       opacity: 1,
       rotate: isTopCard ? 0 : rotation,
       transition: {
-        delay: index * 0.2,
         duration: 0.6,
         ease: 'easeInOut',
       },
@@ -54,15 +54,11 @@ export function PromptCard({
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    if (validateAnswer(input)) {
+    if (validateAnswer(input, answer)) {
       onSuccess()
     } else {
       return null
     }
-  }
-
-  function validateAnswer(input: string): boolean {
-    return input.trim() === answer
   }
 
   return (
@@ -84,7 +80,7 @@ export function PromptCard({
               autoFocus
               autoComplete="off"
               onChange={handleChange}
-              className="w-full rounded border border-red-400 p-2 outline-red-400 focus:outline-2"
+              className="w-full rounded border border-red-400 p-2 font-mono outline-red-400 focus:outline-2"
             />
           </form>
         )}

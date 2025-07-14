@@ -19,10 +19,10 @@ export function PromptCardReveal({ answer }: PromptCardRevealProps) {
   const [reveal, setReveal] = useState(false)
 
   return (
-    <div className="grid place-content-center">
+    <div className="inline-flex flex-col justify-center gap-2">
       <motion.button
         type="button"
-        className="flex justify-center rounded p-2 text-stone-600 outline-red-400 focus-visible:outline-2"
+        className="flex justify-center rounded text-stone-600 outline-red-400 focus-visible:outline-2"
         onClick={() => setReveal(!reveal)}
         variants={variants}
       >
@@ -34,7 +34,7 @@ export function PromptCardReveal({ answer }: PromptCardRevealProps) {
       </motion.button>
 
       <motion.div
-        className="font-mono"
+        className="text-center font-mono"
         initial={{ opacity: 0 }}
         animate={{ opacity: reveal ? 1 : 0 }}
       >

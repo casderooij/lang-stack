@@ -1,17 +1,32 @@
 'use client'
 
 import type { Card } from '@/types'
+import { shuffleArray } from '@/utils'
+import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 import { PromptCard } from './promptCard'
-import { AnimatePresence } from 'motion/react'
 
 interface PromptCardsProps {
   cards: Card[]
 }
 
-export function PromptCards({ cards }: PromptCardsProps) {
-  const [cardStack, setCardStack] = useState(cards)
-  const [topCardId, setTopCardId] = useState(cards[cards.length - 1].id)
+export default function PromptCards({ cards }: PromptCardsProps) {
+  const [cardStack, setCardStack] = useState(() => {
+    if (typeof window === 'undefined') {
+      return []
+    }
+
+    const min = 3
+    const max = 5
+
+    const count = Math.floor(Math.random() * (max - min + 1)) + min
+
+    const shuffled = shuffleArray(cards)
+
+    return shuffled.slice(0, count)
+  })
+
+  const topCard = cardStack[cardStack.length - 1] ?? null
 
   return (
     <div className="absolute inset-0 top-1/2 left-1/2 -translate-1/2">
@@ -22,12 +37,9 @@ export function PromptCards({ cards }: PromptCardsProps) {
             index={index}
             prompt={card.prompt}
             answer={card.answer}
-            isTopCard={topCardId === card.id}
+            isTopCard={topCard?.id === card.id}
             onSuccess={() => {
-              if (cardStack.length > 1) {
-                setTopCardId(cardStack[cardStack.length - 2].id)
-              }
-              setCardStack((cards) => cards.filter(({ id }) => id !== card.id))
+              setCardStack((stack) => stack.filter((c) => c.id !== card.id))
             }}
           />
         ))}
