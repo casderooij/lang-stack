@@ -41,6 +41,7 @@ export function PromptCard({
       opacity: 1,
       rotate: isTopCard ? 0 : rotation,
       transition: {
+        delayChildren: 0.2,
         duration: 0.6,
         ease: 'easeInOut',
       },

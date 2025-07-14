@@ -16,7 +16,7 @@ export default function PromptCards({ cards }: PromptCardsProps) {
       return []
     }
 
-    const min = 3
+    const min = 5
     const max = 5
 
     const count = Math.floor(Math.random() * (max - min + 1)) + min
